@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Personal Daily tasks & routine scheduler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOGIN SECTION -->
+    <div id="loginContainer" class="login-wrapper">
+        <div class="login-card">
+            <h2>📅 Daily Planner</h2>
+            <p>Welcome back! 👩‍💻</p>
+            <input type="text" id="loginUsername" placeholder="Username" value="pratiksha">
+            <input type="password" id="loginPassword" placeholder="Password" value="12345">
+            <button id="loginBtn">Login →</button>
+            <small style="display:block; margin-top:12px;"></small>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="appContainer" style="display:none;">
+        <div class="app-grid">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="user-info">
+                    <h3>🌸 Welcome To Your Daily Planner</h3>
+                    <p id="liveDateTime">--:-- --</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="nav-btn active" data-tab="dashboard">📊 Dashboard</button>
+                    <button class="nav-btn" data-tab="tasks">✅ My Tasks</button>
+                    <button class="nav-btn" data-tab="routine">⏰ Daily Routine</button>
+                    <button class="nav-btn" data-tab="calendar">📆 Calendar</button>
+                    <button class="nav-btn" data-tab="reminders">🔔 Reminders</button>
+                </nav>
+                <button id="logoutBtnSide" class="logout-btn">🚪 Logout</button>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <!-- DASHBOARD TAB with charts -->
+                <div id="dashboardTab" class="tab-content active-tab">
+                    <div class="dashboard-header">
+                        <h2>📌 Dashboard</h2>
+                        <p>summary of your progress</p>
+                    </div>
+                    <div class="stats-cards">
+                        <div class="stat-card pink-bg">
+                            <h3>Total Tasks</h3>
+                            <span id="totalTasksCount">0</span>
+                        </div>
+                        <div class="stat-card green-bg">
+                            <h3>Completed</h3>
+                            <span id="completedTasksCount">0</span>
+                        </div>
+                        <div class="stat-card orange-bg">
+                            <h3>Pending</h3>
+                            <span id="pendingTasksCount">0</span>
+                        </div>
+                    </div>
+
+                    
+                      <!-- PROGRESS CHARTS SECTION -->
+                    <div class="charts-section">
+                        <h3>📈 Progress Analytics</h3>
+                        <div class="chart-controls">
+                            <button id="weeklyChartBtn" class="chart-btn active">Weekly Progress</button>
+                            <button id="monthlyChartBtn" class="chart-btn">Monthly Progress</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="progressChart" width="400" height="200" style="max-width:100%; height:auto;"></canvas>
+                        </div>
+                        <div id="chartStats" class="chart-stats">
+                            <p>Select a period to see your task completion trend</p>
+                        </div>
+                    </div>
+                    <div class="recent-section">
+                        <h3>⭐ Quick Tip</h3>
+                        <p>Stay consistent! Break big tasks into small steps. 💪</p>
+                    </div>
+                </div>
+
+
+                <!-- TASKS TAB -->
+                <div id="tasksTab" class="tab-content">
+                    <div class="tasks-header">
+                        <h2>✏️ Manage Tasks</h2>
+                        <div class="task-controls">
+                            <input type="text" id="searchTask" placeholder="🔍 Search task..." class="search-input">
+                            <select id="filterStatus" class="filter-select">
+                                <option value="all">All Tasks</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                            <button id="addNewTaskBtn" class="add-task-btn">+ Add Task</button>
+                        </div>
+                    </div>
+                    <div id="taskListContainer" class="task-list">
+                        <!-- tasks dynamic -->
+                    </div>
+                </div>
+
+                <!-- ROUTINE TAB -->
+                <div id="routineTab" class="tab-content">
+                    <div class="routine-header">
+                        <h2>🌅 Daily Routine</h2>
+                        <button id="resetDefaultRoutine" class="small-reset">⟳ Reset Default</button>
+                    </div>
+                    <div id="routineList" class="routine-cards">
+                        <!-- routine items -->
+                    </div>
+                    <div class="add-routine-form">
+                        <input type="text" id="newRoutineActivity" placeholder="e.g., Yoga, Study, etc.">
+                        <input type="time" id="newRoutineTime" value="09:00">
+                        <button id="addRoutineBtn">+ Add Routine</button>
+                    </div>
+                </div>
+
+                <!-- CALENDAR TAB -->
+                <div id="calendarTab" class="tab-content">
+                    <div class="calendar-header">
+                        <h2>📅 Calendar View</h2>
+                        <p>Click on any date to see or add tasks for that day</p>
+                    </div>
+                    <div class="calendar-wrapper">
+                        <div class="calendar-nav">
+                            <button id="prevMonthBtn">◀ Previous</button>
+                            <span id="currentMonthYear"></span>
+                            <button id="nextMonthBtn">Next ▶</button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- weekdays and dates inserted here -->
+                        </div>
+                    </div>
+                    <div id="selectedDateInfo" class="selected-date-info">
+                        <h3>Tasks for <span id="selectedDateText">---</span></h3>
+                        <div id="dateTasksList" class="date-tasks-list"></div>
+                        <div class="add-task-calendar">
+                            <input type="text" id="calendarTaskInput" placeholder="New task for this date" maxlength="50">
+                            <select id="calendarTaskPriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            <button id="addTaskForDateBtn">+ Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REMINDERS TAB (NEW) -->
+                <div id="remindersTab" class="tab-content">
+                    <div class="reminders-header">
+                        <h2>🔔 Task Reminders</h2>
+                        <p>Set reminders for your important tasks</p>
+                        <button id="requestNotificationBtn" class="notif-btn">🔔 Enable Notifications</button>
+                    </div>
+                    
+                    <div class="add-reminder-form">
+                        <h3>➕ Add New Reminder</h3>
+                        <select id="reminderTaskSelect" class="reminder-select">
+                            <option value="">Select a task...</option>
+                        </select>
+                        <input type="datetime-local" id="reminderDateTime" class="reminder-datetime">
+                        <button id="addReminderBtn" class="add-reminder-btn">Set Reminder</button>
+                    </div>
+                    
+                    <div class="reminders-list-section">
+                        <h3>⏰ Upcoming Reminders</h3>
+                        <div id="remindersList" class="reminders-list">
+                            <!-- reminders will appear here -->
+                        </div>
+                    </div>
+                    
+                    <div class="past-reminders">
+                        <h3>✅ Completed Reminders</h3>
+                        <div id="pastRemindersList" class="past-reminders-list">
+                            <!-- past reminders -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL FOR ADD/EDIT TASK -->
+    <div id="taskModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle">Add New Task</h3>
+            <input type="text" id="taskTitleInput" placeholder="Task title" maxlength="60">
+            <select id="taskPriority">
+                <option value="Low">🔵 Low</option>
+                <option value="Medium" selected>🟠 Medium</option>
+                <option value="High">🔴 High</option>
+            </select>
+            <div class="modal-buttons">
+                <button id="saveTaskBtn">💾 Save</button>
+                <button id="cancelModalBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
