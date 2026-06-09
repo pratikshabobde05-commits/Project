@@ -1,0 +1,806 @@
+/* style.css - updated with reminders and notification styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #ffe4ec;
+    min-height: 100vh;
+}
+
+/* LOGIN WRAPPER */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd9e6, #ffb7c5);
+}
+
+.login-card {
+    background: white;
+    padding: 2rem 2rem;
+    border-radius: 32px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+}
+
+.login-card h2 {
+    color: #e8436e;
+    margin-bottom: 8px;
+}
+
+.login-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #ffc0d0;
+    border-radius: 40px;
+    outline: none;
+    background: #fffafc;
+}
+
+.login-card input:focus {
+    border-color: #f67e9e;
+    box-shadow: 0 0 0 2px #ffe0e8;
+}
+
+.login-card button {
+    background: #e8436e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.login-card button:hover {
+    background: #d62c5a;
+}
+
+/* APP LAYOUT */
+.app-grid {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: white;
+    border-radius: 0 28px 28px 0;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.05);
+    padding: 28px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start; /* change */
+    gap: 20px;                   /* add */
+}
+
+.user-info h3 {
+    color: #e8436e;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.user-info p {
+    background: #fff0f3;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: #b34e6e;
+}
+
+.sidebar-nav {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 12px 18px;
+    font-size: 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #5e3a46;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: #ffeef2;
+}
+
+.nav-btn.active {
+    background: #ffdce5;
+    color: #d43f68;
+    font-weight: bold;
+    border-left: 4px solid #e8436e;
+}
+
+.logout-btn {
+    background: #ffe2e9;
+    border: none;
+    padding: 10px;
+    border-radius: 40px;
+    color: #b83b5e;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #fcc2d2;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    padding: 28px 32px;
+    background: #fffafb;
+    margin: 16px 20px;
+    border-radius: 32px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    overflow-y: auto;
+    max-height: calc(100vh - 32px);
+}
+
+.tab-content {
+    display: none;
+}
+
+.active-tab {
+    display: block;
+}
+
+/* DASHBOARD CARDS */
+.stats-cards {
+    display: flex;
+    gap: 24px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 28px;
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(231, 76, 110, 0.08);
+    transition: 0.2s;
+    border: 1px solid #ffe0e8;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    color: #ad5d76;
+    margin-bottom: 12px;
+}
+
+.stat-card span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e8436e;
+}
+
+.pink-bg { background: #fff5f7; }
+.green-bg { background: #f0fff4; }
+.orange-bg { background: #fff7ed; }
+
+/* CHARTS SECTION */
+.charts-section {
+    background: white;
+    border-radius: 28px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.charts-section h3 {
+    color: #e8436e;
+    margin-bottom: 15px;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.chart-btn {
+    background: #ffe0e8;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.chart-btn.active {
+    background: #e8436e;
+    color: white;
+}
+
+.chart-container {
+    background: #fffafb;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.chart-stats {
+    background: #fff5f7;
+    padding: 12px;
+    border-radius: 16px;
+    text-align: center;
+    color: #b34e6e;
+}
+
+.recent-section {
+    background: #fff1f4;
+    padding: 20px;
+    border-radius: 24px;
+    margin-top: 20px;
+}
+
+/* TASK CONTROLS */
+.tasks-header {
+    margin-bottom: 24px;
+}
+
+.task-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.search-input, .filter-select {
+    padding: 10px 16px;
+    border: 1px solid #ffc0cf;
+    border-radius: 40px;
+    background: white;
+    outline: none;
+    flex: 1;
+}
+
+.add-task-btn {
+    background: #e8436e;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* TASK CARDS */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 24px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border-left: 8px solid #f1a7bd;
+}
+
+.task-card.completed {
+    opacity: 0.75;
+    background: #f9f1f4;
+    border-left-color: #9bcd9c;
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+.task-priority {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 30px;
+    background: #ffeef2;
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.complete-check {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* ROUTINE SECTION */
+.routine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.small-reset {
+    background: #ffe0e8;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.routine-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.routine-item {
+    background: white;
+    border-radius: 20px;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px #f0e0e5;
+}
+
+.routine-time {
+    font-weight: bold;
+    color: #e8436e;
+    background: #fff0f3;
+    padding: 4px 12px;
+    border-radius: 40px;
+}
+
+.routine-activity {
+    flex: 1;
+    margin-left: 18px;
+    font-weight: 500;
+}
+
+.routine-item button {
+    background: #ffe2ea;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #a54261;
+}
+
+.add-routine-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.add-routine-form input, .add-routine-form button {
+    padding: 10px 14px;
+    border-radius: 50px;
+    border: 1px solid #ffc0cf;
+}
+
+.add-routine-form button {
+    background: #e8436e;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* CALENDAR STYLES */
+.calendar-wrapper {
+    background: white;
+    border-radius: 28px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.calendar-nav button {
+    background: #ffe0e8;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.calendar-nav button:hover {
+    background: #ffc0d0;
+}
+
+#currentMonthYear {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e8436e;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: bold;
+    padding: 12px 5px;
+    background: #fff0f3;
+    border-radius: 12px;
+    color: #b34e6e;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 12px 5px;
+    background: #fffafc;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #ffe0e8;
+}
+
+.calendar-day:hover {
+    background: #ffdce5;
+    transform: scale(1.02);
+}
+
+.calendar-day.selected {
+    background: #e8436e;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.has-task {
+    border-bottom: 3px solid #e8436e;
+}
+
+.empty-day {
+    background: #faf0f3;
+    border-radius: 12px;
+    padding: 12px 5px;
+    text-align: center;
+    color: #c9a5b2;
+}
+
+.selected-date-info {
+    background: #fff5f7;
+    border-radius: 24px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.date-tasks-list {
+    margin: 15px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.date-task-item {
+    background: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-calendar {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.add-task-calendar input, .add-task-calendar select, .add-task-calendar button {
+    padding: 8px 12px;
+    border-radius: 30px;
+    border: 1px solid #ffc0cf;
+}
+
+.add-task-calendar button {
+    background: #e8436e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* REMINDERS STYLES */
+.reminders-header {
+    margin-bottom: 25px;
+}
+
+.notif-btn {
+    background: #e8436e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.add-reminder-form {
+    background: white;
+    padding: 20px;
+    border-radius: 24px;
+    margin-bottom: 25px;
+}
+
+.add-reminder-form h3 {
+    color: #e8436e;
+    margin-bottom: 15px;
+}
+
+.reminder-select, .reminder-datetime {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ffc0cf;
+    border-radius: 40px;
+    outline: none;
+}
+
+.add-reminder-btn {
+    background: #e8436e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.reminders-list-section, .past-reminders {
+    background: white;
+    padding: 20px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+}
+
+.reminders-list-section h3, .past-reminders h3 {
+    color: #e8436e;
+    margin-bottom: 15px;
+}
+
+.reminders-list, .past-reminders-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.reminder-item, .past-reminder-item {
+    background: #fff5f7;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #e8436e;
+}
+
+.reminder-info {
+    flex: 1;
+}
+
+.reminder-task {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.reminder-time {
+    font-size: 0.8rem;
+    color: #b34e6e;
+}
+
+.delete-reminder-btn {
+    background: #ffe2ea;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #a54261;
+}
+
+/* TOAST NOTIFICATION */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.toast {
+    background: #e8436e;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease;
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 28px;
+    border-radius: 32px;
+    width: 320px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content input, .modal-content select {
+    width: 100%;
+    margin: 12px 0;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #ffb7c9;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+}
+#saveTaskBtn {
+    background: #e8436e;
+    color: white;
+}
+
+#cancelModalBtn {
+    background: #f0f0f0;
+}
+
+/* responsive */
+@media (max-width: 780px) {
+    .app-grid {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-radius: 0 0 28px 28px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+    }
+    .sidebar-nav {
+        flex-direction: row;
+        margin: 10px 0;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .nav-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .main-content {
+        margin: 12px;
+        padding: 20px;
+        max-height: calc(100vh - 120px);
+    }
+    .stats-cards {
+        flex-direction: column;
+    }
+    .calendar-grid {
+        gap: 4px;
+    }
+    .calendar-day, .weekday {
+        font-size: 12px;
+        padding: 8px 3px;
+    }
+    .chart-container canvas {
+        height: 200px !important;
+    }
+}
